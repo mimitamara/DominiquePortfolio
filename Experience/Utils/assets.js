@@ -2,7 +2,7 @@ export default [
   {
     name: "room",
     type: "glbModel",
-    path: "/models/final_woFloor.glb",
+    path: "/models/finale.glb",
   },
   {
     name: "screen",

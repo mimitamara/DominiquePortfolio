@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import Experience from "../Experience.js";
 import GSAP from "gsap";
+import { RectAreaLightHelper } from "three/addons/helpers/RectAreaLightHelper.js";
 
 export default class Room {
   constructor() {
@@ -26,6 +27,8 @@ export default class Room {
       child.castShadow = true;
       child.receiveShadow = true;
 
+      console.log(child);
+
       if (child instanceof THREE.Group) {
         child.children.forEach((groupchild) => {
           groupchild.castShadow = true;
@@ -33,12 +36,16 @@ export default class Room {
         });
       }
 
-      if (child.name === "Screen") {
+      if (child.name === "Screens") {
         child.material = new THREE.MeshBasicMaterial({
           map: this.resources.items.screen,
         });
       }
     });
+
+    const light = new THREE.PointLight(0xffffff, 5, 1000);
+    light.position.set(-0.038055, -3.84671, 1.63203);
+    this.actualRoom.add(light);
 
     this.scene.add(this.actualRoom);
     this.actualRoom.scale.set(0.25, 0.25, 0.25);

@@ -8,11 +8,11 @@ export default class Environment {
     this.experience = new Experience();
     this.scene = this.experience.scene;
 
-    this.gui = new GUI();
-    this.obj = {
-      colorObj: { r: 0, g: 0, b: 0 },
-      intensity: 3,
-    };
+    // this.gui = new GUI();
+    //this.obj = {
+    // colorObj: { r: 0, g: 0, b: 0 },
+    // intensity: 3,
+    // };
 
     this.setSunlight();
     //this.setGUI();
