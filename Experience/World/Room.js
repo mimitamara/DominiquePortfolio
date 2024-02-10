@@ -37,7 +37,7 @@ export default class Room {
       }
 
       if (child.name === "Screens") {
-        child.material = new THREE.MeshBasicMaterial({
+        child.children[3].material = new THREE.MeshBasicMaterial({
           map: this.resources.items.screen,
         });
       }
@@ -48,7 +48,7 @@ export default class Room {
     this.actualRoom.add(light);
 
     this.scene.add(this.actualRoom);
-    this.actualRoom.scale.set(0.25, 0.25, 0.25);
+    this.actualRoom.scale.set(0.35, 0.35, 0.35);
     //this.actualRoom.rotation.y = Math.PI;
   }
 
