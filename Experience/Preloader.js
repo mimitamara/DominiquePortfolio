@@ -1,5 +1,5 @@
 import { EventEmitter } from "events";
-import Experience from "./Experience";
+import Experience from "./Experience.js";
 import GSAP from "gsap";
 import convert from "./Utils/convertDivsToSpans.js";
 
@@ -29,9 +29,9 @@ export default class Preloader extends EventEmitter {
     convert(document.querySelector(".hero-main-title"));
     convert(document.querySelector(".hero-main-description"));
     convert(document.querySelector(".hero-second-subheading"));
+
     this.room = this.experience.world.room.actualRoom;
     this.roomChildren = this.experience.world.room.roomChildren;
-    console.log(this.roomChildren);
   }
 
   firstIntro() {
@@ -47,7 +47,7 @@ export default class Preloader extends EventEmitter {
       });
       if (this.device === "desktop") {
         this.timeline
-          .to(this.roomChildren.introcube.scale, {
+          .to(this.roomChildren.cube.scale, {
             x: 1.4,
             y: 1.4,
             z: 1.4,
@@ -61,7 +61,7 @@ export default class Preloader extends EventEmitter {
           });
       } else {
         this.timeline
-          .to(this.roomChildren.introcube.scale, {
+          .to(this.roomChildren.cube.scale, {
             x: 1.4,
             y: 1.4,
             z: 1.4,
@@ -130,14 +130,14 @@ export default class Preloader extends EventEmitter {
           "same"
         )
         .to(
-          this.roomChildren.introcube.rotation,
+          this.roomChildren.cube.rotation,
           {
             y: 2 * Math.PI + Math.PI / 4,
           },
           "same"
         )
         .to(
-          this.roomChildren.introcube.scale,
+          this.roomChildren.cube.scale,
           {
             x: 10,
             y: 10,
@@ -153,11 +153,11 @@ export default class Preloader extends EventEmitter {
           "same"
         )
         .to(
-          this.roomChildren.introcube.position,
+          this.roomChildren.cube.position,
           {
-            x: 0.152343,
-            y: 1.05485,
-            z: 2.17592,
+            x: 0.638711,
+            y: 8.5618,
+            z: 1.3243,
           },
           "same"
         )
@@ -167,7 +167,7 @@ export default class Preloader extends EventEmitter {
           z: 1,
         })
         .to(
-          this.roomChildren.introcube.scale,
+          this.roomChildren.cube.scale,
           {
             x: 0,
             y: 0,
@@ -195,7 +195,7 @@ export default class Preloader extends EventEmitter {
           "introtext"
         )
         .to(
-          ".hero-second-subheading .animatedis",
+          ".hero-second.description .animatedis",
           {
             yPercent: 0,
             stagger: 0.07,
@@ -204,7 +204,7 @@ export default class Preloader extends EventEmitter {
           "introtext"
         )
         .to(
-          this.roomChildren.picture_frames.scale,
+          this.roomChildren.body.scale,
           {
             x: 1,
             y: 1,
@@ -215,7 +215,7 @@ export default class Preloader extends EventEmitter {
           ">-0.5"
         )
         .to(
-          this.roomChildren.desks.scale,
+          this.roomChildren.pictureframes.scale,
           {
             x: 1,
             y: 1,
@@ -226,7 +226,7 @@ export default class Preloader extends EventEmitter {
           ">-0.4"
         )
         .to(
-          this.roomChildren.screens.scale,
+          this.roomChildren.desks.scale,
           {
             x: 1,
             y: 1,
@@ -237,7 +237,18 @@ export default class Preloader extends EventEmitter {
           ">-0.3"
         )
         .to(
-          this.roomChildren.bed_chair.scale,
+          this.roomChildren.screens.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "back.out(2.2)",
+            duration: 0.5,
+          },
+          ">-0.2"
+        )
+        .to(
+          this.roomChildren.bedchair.scale,
           {
             x: 1,
             y: 1,
@@ -267,7 +278,6 @@ export default class Preloader extends EventEmitter {
           },
           "chair"
         )
-
         .to(".arrow-svg-wrapper", {
           opacity: 1,
           onComplete: resolve,
@@ -314,7 +324,6 @@ export default class Preloader extends EventEmitter {
     window.addEventListener("touchstart", this.touchStart);
     window.addEventListener("touchmove", this.touchMove);
   }
-
   async playSecondIntro() {
     this.moveFlag = false;
     await this.secondIntro();

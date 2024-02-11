@@ -44,7 +44,7 @@ export default class Room {
       }
 
       child.scale.set(0, 0, 0);
-      if (child.name === "Introcube") {
+      if (child.name === "cube") {
         //child.scale.set(0.5, 0.5, 0.5);
         child.position.set(0, -0.29, 0);
         child.rotation.y = 4;
