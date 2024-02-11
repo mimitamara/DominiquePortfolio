@@ -11,6 +11,7 @@ export default class Room {
     this.time = this.experience.time;
     this.room = this.resources.items.room;
     this.actualRoom = this.room.scene;
+    this.roomChildren = {};
 
     this.lerp = {
       current: 0,
@@ -41,11 +42,22 @@ export default class Room {
           map: this.resources.items.screen,
         });
       }
+
+      child.scale.set(0, 0, 0);
+      if (child.name === "Introcube") {
+        //child.scale.set(0.5, 0.5, 0.5);
+        child.position.set(0, -0.29, 0);
+        child.rotation.y = 4;
+      }
+
+      this.roomChildren[child.name.toLowerCase()] = child;
     });
 
     const light = new THREE.PointLight(0xffffff, 5, 1000);
     light.position.set(-0.038055, -3.84671, 1.63203);
     this.actualRoom.add(light);
+
+    this.roomChildren["light"] = light;
 
     this.scene.add(this.actualRoom);
     this.actualRoom.scale.set(0.35, 0.35, 0.35);

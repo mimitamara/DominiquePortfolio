@@ -18,7 +18,14 @@ export default class Controls {
         this.light = child;
       }
     });
+
+    this.circleFirst = this.experience.world.floor.circleFirst;
+    this.circleSecond = this.experience.world.floor.circleSecond;
+    this.circleThird = this.experience.world.floor.circleThird;
+
     GSAP.registerPlugin(ScrollTrigger);
+
+    document.querySelector(".page").style.overflow = "visible";
 
     this.setSmoothScroll();
     this.setScrollTrigger();
@@ -240,13 +247,14 @@ export default class Controls {
         this.thirdMoveTimeline.to(
           this.room.position,
           {
-            x: -4.25,
-            z: 21,
+            x: -5,
+            z: 100,
           },
           "same"
         );
       },
-      all: function () {
+      // all
+      all: () => {
         this.sections = document.querySelectorAll(".section");
         this.sections.forEach((section) => {
           this.progressWrapper = section.querySelector(".progress-wrapper");
@@ -340,7 +348,7 @@ export default class Controls {
           .to(
             this.room.position,
             {
-              y: 0.7,
+              y: 0.15,
             },
             "same"
           );
@@ -361,7 +369,6 @@ export default class Controls {
       },
     });
   }
-
   resize() {}
 
   update() {}

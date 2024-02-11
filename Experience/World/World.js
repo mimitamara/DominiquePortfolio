@@ -6,9 +6,11 @@ import Floor from "./Floor.js";
 
 import Controls from "./Controls.js";
 import Environment from "./Environment.js";
+import { EventEmitter } from "events";
 
-export default class World {
+export default class World extends EventEmitter {
   constructor() {
+    super();
     this.experience = new Experience();
     this.sizes = this.experience.sizes;
     this.scene = this.experience.scene;
@@ -19,9 +21,10 @@ export default class World {
 
     this.resources.on("ready", () => {
       this.environment = new Environment();
-      this.room = new Room();
       this.floor = new Floor();
+      this.room = new Room();
       this.controls = new Controls();
+      this.emit("worldready");
     });
 
     this.theme.on("switch", (theme) => {
