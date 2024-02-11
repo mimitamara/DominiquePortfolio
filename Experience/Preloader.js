@@ -248,7 +248,18 @@ export default class Preloader extends EventEmitter {
           ">-0.2"
         )
         .to(
-          this.roomChildren.bedchair.scale,
+          this.roomChildren.carpetitems.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "back.out(2.2)",
+            duration: 0.5,
+          },
+          ">-0.1"
+        )
+        .to(
+          this.roomChildren.flooritem.scale,
           {
             x: 1,
             y: 1,
@@ -344,9 +355,9 @@ export default class Preloader extends EventEmitter {
     this.roomChildren.light.height = 0;
 
     if (this.device === "desktop") {
-      this.room.scale.set(0.11, 0.11, 0.11);
+      this.room.scale.set(0.25, 0.25, 0.25);
     } else {
-      this.room.scale.set(0.07, 0.07, 0.07);
+      this.room.scale.set(0.11, 0.11, 0.11);
     }
   }
 
