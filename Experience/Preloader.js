@@ -130,9 +130,9 @@ export default class Preloader extends EventEmitter {
         .to(
           this.room.position,
           {
-            x: 5,
-            y: 5,
-            z: 5,
+            x: 0,
+            y: 1.5,
+            z: -5,
             ease: "power1.out",
           },
           "same"
@@ -140,7 +140,7 @@ export default class Preloader extends EventEmitter {
         .to(
           this.roomChildren.cube.rotation,
           {
-            y: 2 * Math.PI + Math.PI / 4,
+            y: 2 * Math.PI + Math.PI / 8,
           },
           "same"
         )
