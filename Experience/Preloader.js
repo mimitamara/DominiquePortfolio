@@ -45,12 +45,20 @@ export default class Preloader extends EventEmitter {
           document.querySelector(".preloader").classList.add("hidden");
         },
       });
+
       if (this.device === "desktop") {
         this.timeline
+          .to(this.roomChildren.cube.position, {
+            x: 0,
+            y: 0,
+            z: 0,
+            ease: "back.out(2.5)",
+            duration: 0.7,
+          })
           .to(this.roomChildren.cube.scale, {
-            x: 1.4,
-            y: 1.4,
-            z: 1.4,
+            x: 1,
+            y: 1,
+            z: 1,
             ease: "back.out(2.5)",
             duration: 0.7,
           })
@@ -62,9 +70,9 @@ export default class Preloader extends EventEmitter {
       } else {
         this.timeline
           .to(this.roomChildren.cube.scale, {
-            x: 1.4,
-            y: 1.4,
-            z: 1.4,
+            x: 2,
+            y: 2,
+            z: 2,
             ease: "back.out(2.5)",
             duration: 0.7,
           })
@@ -122,9 +130,9 @@ export default class Preloader extends EventEmitter {
         .to(
           this.room.position,
           {
-            x: 0,
-            y: 0,
-            z: 0,
+            x: 5,
+            y: 5,
+            z: 5,
             ease: "power1.out",
           },
           "same"
@@ -195,7 +203,7 @@ export default class Preloader extends EventEmitter {
           "introtext"
         )
         .to(
-          ".hero-second.description .animatedis",
+          ".hero-second-description .animatedis",
           {
             yPercent: 0,
             stagger: 0.07,
@@ -248,6 +256,17 @@ export default class Preloader extends EventEmitter {
           ">-0.2"
         )
         .to(
+          this.roomChildren.beditems.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "back.out(2.2)",
+            duration: 0.5,
+          },
+          ">-0.1"
+        )
+        .to(
           this.roomChildren.carpetitems.scale,
           {
             x: 1,
@@ -258,37 +277,26 @@ export default class Preloader extends EventEmitter {
           },
           ">-0.1"
         )
-        .to(
-          this.roomChildren.flooritem.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "back.out(2.2)",
-            duration: 0.5,
-          },
-          ">-0.1"
-        )
-        .to(
-          this.roomChildren.chair.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "back.out(2.2)",
-            duration: 0.5,
-          },
-          "chair"
-        )
-        .to(
-          this.roomChildren.chair.rotation,
-          {
-            y: 4 * Math.PI + Math.PI / 4,
-            ease: "power2.out",
-            duration: 1,
-          },
-          "chair"
-        )
+        // // .to(
+        // //   this.roomChildren.chair.scale,
+        // //   {
+        // //     x: 1,
+        // //     y: 1,
+        // //     z: 1,
+        // //     ease: "back.out(2.2)",
+        // //     duration: 0.5,
+        // //   },
+        // //   "chair"
+        // )
+        // .to(
+        //   this.roomChildren.chair.rotation,
+        //   {
+        //     y: 4 * Math.PI + Math.PI / 4,
+        //     ease: "power2.out",
+        //     duration: 1,
+        //   },
+        //   "chair"
+        // )
         .to(".arrow-svg-wrapper", {
           opacity: 1,
           onComplete: resolve,
