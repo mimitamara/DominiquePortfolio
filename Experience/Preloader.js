@@ -163,9 +163,9 @@ export default class Preloader extends EventEmitter {
         .to(
           this.roomChildren.cube.position,
           {
-            x: 0.638711,
-            y: 8.5618,
-            z: 1.3243,
+            x: -0.036321,
+            y: 0.04629,
+            z: 2.64549,
           },
           "same"
         )
@@ -277,26 +277,6 @@ export default class Preloader extends EventEmitter {
           },
           ">-0.1"
         )
-        // // .to(
-        // //   this.roomChildren.chair.scale,
-        // //   {
-        // //     x: 1,
-        // //     y: 1,
-        // //     z: 1,
-        // //     ease: "back.out(2.2)",
-        // //     duration: 0.5,
-        // //   },
-        // //   "chair"
-        // )
-        // .to(
-        //   this.roomChildren.chair.rotation,
-        //   {
-        //     y: 4 * Math.PI + Math.PI / 4,
-        //     ease: "power2.out",
-        //     duration: 1,
-        //   },
-        //   "chair"
-        // )
         .to(".arrow-svg-wrapper", {
           opacity: 1,
           onComplete: resolve,
