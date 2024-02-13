@@ -50,8 +50,8 @@ export default class Preloader extends EventEmitter {
         this.timeline
           .to(this.roomChildren.cube.position, {
             x: 0,
-            y: 0,
-            z: 0,
+            y: -0.5,
+            z: 4.5,
             ease: "back.out(2.5)",
             duration: 0.7,
           })
@@ -163,16 +163,16 @@ export default class Preloader extends EventEmitter {
         .to(
           this.roomChildren.cube.position,
           {
-            x: -0.036321,
-            y: 0.04629,
-            z: 2.64549,
+            x: -0.01442,
+            y: 0.101997,
+            z: 2.6244,
           },
           "same"
         )
         .set(this.roomChildren.body.scale, {
-          x: 1,
-          y: 1,
-          z: 1,
+          x: 8.0,
+          y: 7.9,
+          z: 5.0,
         })
         .to(
           this.roomChildren.cube.scale,
@@ -180,7 +180,7 @@ export default class Preloader extends EventEmitter {
             x: 0,
             y: 0,
             z: 0,
-            duration: 1,
+            duration: 0.7,
           },
           "introtext"
         )
