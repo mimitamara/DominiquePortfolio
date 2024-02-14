@@ -34,7 +34,7 @@ export default class Room {
           groupchild.castShadow = true;
           groupchild.receiveShadow = true;
 
-          this.roomChildren[groupchild.name.toLocaleLowerCase()] = groupchild;
+          // this.roomChildren[groupchild.name.toLocaleLowerCase()] = groupchild;
         });
       }
 

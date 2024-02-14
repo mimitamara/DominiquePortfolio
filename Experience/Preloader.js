@@ -132,7 +132,7 @@ export default class Preloader extends EventEmitter {
           {
             x: 0,
             y: 1.5,
-            z: -5,
+            z: -9,
             ease: "power1.out",
           },
           "same"
@@ -156,7 +156,7 @@ export default class Preloader extends EventEmitter {
         .to(
           this.camera.orthographicCamera.position,
           {
-            y: 6.5,
+            y: 8,
           },
           "same"
         )
