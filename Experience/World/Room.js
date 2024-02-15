@@ -27,7 +27,7 @@ export default class Room {
       child.castShadow = true;
       child.receiveShadow = true;
 
-      console.log(child);
+      // console.log(child);
 
       if (child instanceof THREE.Group) {
         child.children.forEach((groupchild) => {
@@ -76,11 +76,11 @@ export default class Room {
   resize() {}
 
   update() {
-    this.lerp.current = GSAP.utils.interpolate(
-      this.lerp.current,
-      this.lerp.target,
-      this.lerp.ease
-    );
-    this.actualRoom.rotation.y = this.lerp.current;
+    // this.lerp.current = GSAP.utils.interpolate(
+    //   this.lerp.current,
+    //   this.lerp.target,
+    //   this.lerp.ease
+    // );
+    // this.actualRoom.rotation.y = this.lerp.current;
   }
 }
