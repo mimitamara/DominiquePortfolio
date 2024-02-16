@@ -239,17 +239,18 @@ export default class Controls {
         this.thirdMoveTimeline.to(
           this.room.scale,
           {
-            x: 2,
-            y: 2,
-            z: 2,
+            x: 1,
+            y: 1,
+            z: 1,
           },
           "same"
         );
         this.thirdMoveTimeline.to(
           this.room.position,
           {
-            x: -5,
-            z: 100,
+            x: -3,
+            y: 2,
+            // z: 100,
           },
           "same"
         );
@@ -324,7 +325,7 @@ export default class Controls {
           },
         }).to(this.circleFirst.scale, {
           x: 3,
-          y: 3,
+          y: 0,
           z: 3,
         });
 
