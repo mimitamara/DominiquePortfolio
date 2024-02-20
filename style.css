@@ -238,6 +238,47 @@ svg {
   left: 28px;
 }
 
+.cv div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.cv p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.cv a {
+  text-decoration: none;
+  color: var(--color-text-dark);
+  font-size: 12px;
+  cursor: pointer;
+  position: relative;
+  width: 120px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-pink);
+  border-radius: 999px;
+  margin: 0px 16px;
+  border: none;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.button--download {
+  justify-content: center;
+  align-items: center;
+}
+
+.button--download:hover {
+  transform: scale(0.9);
+}
+
+.u-bolder {
+  font-weight: bold;
+  margin: 3px;
+}
+
 /* Section formatting ------*/
 
 .section-margin {
