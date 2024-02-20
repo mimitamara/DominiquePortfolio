@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import Experience from "../Experience.js";
 import GSAP from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger.js";
@@ -27,7 +26,7 @@ export default class Controls {
 
     document.querySelector(".page").style.overflow = "visible";
 
-    this.setSmoothScroll();
+    // this.setSmoothScroll();
     this.setScrollTrigger();
   }
   setupASScroll() {
@@ -67,9 +66,7 @@ export default class Controls {
 
     requestAnimationFrame(() => {
       asscroll.enable({
-        newScrollElements: document.querySelectorAll(
-          ".gsap-marker-start, .gsap-marker-end, [asscroll]"
-        ),
+        newScrollElements: document.querySelectorAll(".gsap-marker-start, .gsap-marker-end, [asscroll]"),
       });
     });
     return asscroll;
@@ -80,21 +77,19 @@ export default class Controls {
   }
 
   setScrollTrigger() {
+    const scrollTriggerProps = {
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 0.6,
+      invalidateOnRefresh: false,
+    };
     ScrollTrigger.matchMedia({
       //Desktop
       "(min-width: 969px)": () => {
         this.room.scale.set(0.35, 0.35, 0.35);
 
         // First Section--------------------------------------------
-        this.firstMoveTimeline = new GSAP.timeline({
-          scrollTrigger: {
-            trigger: ".first-move",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.6,
-            invalidateOnRefresh: true,
-          },
-        });
+        this.firstMoveTimeline = new GSAP.timeline({ scrollTrigger: { trigger: ".first-move", ...scrollTriggerProps } });
         this.firstMoveTimeline.to(this.room.position, {
           x: () => {
             return this.sizes.width * 0.0016;
@@ -102,78 +97,15 @@ export default class Controls {
         });
 
         // Second Section--------------------------------------------
-        this.secondMoveTimeline = new GSAP.timeline({
-          scrollTrigger: {
-            trigger: ".second-move",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.6,
-            invalidateOnRefresh: true,
-          },
-        });
-        this.secondMoveTimeline.to(
-          this.room.position,
-          {
-            x: () => {
-              return 1.2;
-            },
-            z: () => {
-              return this.sizes.height * 0.007;
-            },
-          },
-          "same"
-        );
-        this.secondMoveTimeline.to(
-          this.room.scale,
-          {
-            x: 1.1,
-            y: 1.1,
-            z: 1.1,
-          },
-          "same"
-        );
-        this.secondMoveTimeline.to(
-          this.light,
-          {
-            width: 1 * 30,
-            height: 1 * 30,
-          },
-          "same"
-        );
+        this.secondMoveTimeline = new GSAP.timeline({ scrollTrigger: { trigger: ".second-move", ...scrollTriggerProps } })
+        .to(this.room.position, { y: 0.4 }, "same")
+        .to(this.room.scale, { x: 1, y: 1, z: 1 }, "same")
+        .to(this.light, { width: 1 * 30, height: 1 * 30 }, "same");
 
         // Third Section--------------------------------------------
-        this.thirdMoveTimeline = new GSAP.timeline({
-          scrollTrigger: {
-            trigger: ".third-move",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.6,
-            invalidateOnRefresh: true,
-          },
-        });
-        this.thirdMoveTimeline.to(
-          this.camera.orthographicCamera.position,
-          {
-            y: 5,
-            x: 2.5,
-            z: 5,
-          },
-          "same"
-        );
-
-        // this.thirdMoveTimeline.to(
-        //   this.camera.orthographicCamera.rotate(),
-
-        //   "same"
-        // );
-        this.thirdMoveTimeline.to(
-          this.camera.orthographicCamera.scale,
-          {
-            y: 0.5,
-            x: 0.5,
-          },
-          "same"
-        );
+        this.thirdMoveTimeline = new GSAP.timeline({ scrollTrigger: { trigger: ".third-move", ...scrollTriggerProps } })
+        .to(this.camera.orthographicCamera.position, { y: 10, x: 3, z: 5 }, "same")
+        .to(this.camera.orthographicCamera.scale, { y: 0.7, x: 0.7 }, "same");
       },
 
       //Mobile
@@ -181,80 +113,22 @@ export default class Controls {
         //Resets
         this.room.scale.set(0.15, 0.15, 0.15);
         this.room.position.set(0, 0, 0);
+        //
         // First Section--------------------------------------------
-        this.firstMoveTimeline = new GSAP.timeline({
-          scrollTrigger: {
-            trigger: ".first-move",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.6,
-            invalidateOnRefresh: true,
-          },
-        });
-        this.firstMoveTimeline.to(this.room.scale, {
-          x: 0.25,
-          y: 0.25,
-          z: 0.25,
-        }),
-          // Second Section--------------------------------------------
-          (this.secondMoveTimeline = new GSAP.timeline(
-            {
-              scrollTrigger: {
-                trigger: ".second-move",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 0.6,
-                invalidateOnRefresh: true,
-              },
-            },
-            "same"
-          ));
-        this.secondMoveTimeline.to(
-          this.room.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-          },
-          "same"
-        );
-        this.secondMoveTimeline.to(
-          this.room.position,
-          {
-            x: 3.5,
-            z: 4.5,
-          },
-          "same"
-        );
+        this.firstMoveTimeline = new GSAP.timeline({ scrollTrigger: { trigger: ".first-move", ...scrollTriggerProps } })
+        .to(this.room.scale, { x: 0.25, y: 0.25, z: 0.25 });
+        //
+        // Second Section--------------------------------------------
+        this.secondMoveTimeline = new GSAP.timeline({ scrollTrigger: { trigger: ".second-move", ...scrollTriggerProps } })
+        .to(this.room.scale, { x: 0.9, y: 0.9, z: 0.9 }, "same")
+        .to(this.room.position, { x: 3.5, y: 4, z: 4.5 }, "same");
+        //
         // Third Section--------------------------------------------
-        this.thirdMoveTimeline = new GSAP.timeline({
-          scrollTrigger: {
-            trigger: ".third-move",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.6,
-            invalidateOnRefresh: true,
-          },
-        });
-        this.thirdMoveTimeline.to(
-          this.room.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-          },
-          "same"
-        );
-        this.thirdMoveTimeline.to(
-          this.room.position,
-          {
-            x: -3,
-            y: 2,
-            // z: 100,
-          },
-          "same"
-        );
+        this.thirdMoveTimeline = new GSAP.timeline({ scrollTrigger: { trigger: ".third-move", ...scrollTriggerProps } })
+        .to(this.room.scale, { x: 1, y: 1, z: 1 }, "same")
+        .to(this.room.position, { x: -2, y: 2 }, "same");
       },
+
       // all
       all: () => {
         this.sections = document.querySelectorAll(".section");
@@ -345,15 +219,8 @@ export default class Controls {
               y: 3,
               z: 3,
             },
-            "same"
+            "same",
           )
-          .to(
-            this.room.position,
-            {
-              y: 0.15,
-            },
-            "same"
-          );
 
         // Third section -----------------------------------------
         this.thirdCircle = new GSAP.timeline({
@@ -370,8 +237,8 @@ export default class Controls {
         });
       },
     });
-  }
-  resize() {}
+}
+  resize() { }
 
-  update() {}
+  update() { }
 }
