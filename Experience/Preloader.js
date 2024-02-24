@@ -46,42 +46,6 @@ export default class Preloader extends EventEmitter {
         },
       });
 
-      if (this.device === "desktop") {
-        this.timeline
-          .to(this.roomChildren.cube.position, {
-            x: 0,
-            y: -0.5,
-            z: 4.5,
-            ease: "back.out(2.5)",
-            duration: 0.7,
-          })
-          .to(this.roomChildren.cube.scale, {
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "back.out(2.5)",
-            duration: 0.7,
-          })
-          .to(this.room.position, {
-            x: -1,
-            ease: "power1.out",
-            duration: 0.7,
-          });
-      } else {
-        this.timeline
-          .to(this.roomChildren.cube.scale, {
-            x: 2,
-            y: 2,
-            z: 2,
-            ease: "back.out(2.5)",
-            duration: 0.7,
-          })
-          .to(this.room.position, {
-            z: -1,
-            ease: "power1.out",
-            duration: 0.7,
-          });
-      }
       this.timeline
         .to(".intro-text .animatedis", {
           yPercent: 0,
@@ -130,60 +94,28 @@ export default class Preloader extends EventEmitter {
         .to(
           this.room.position,
           {
-            x: 0,
-            y: 1.5,
-            z: -9,
+            x: 5,
+            y: 5,
+            z: 5,
             ease: "power1.out",
           },
           "same"
         )
-        .to(
-          this.roomChildren.cube.rotation,
-          {
-            y: 2 * Math.PI + Math.PI / 8,
-          },
-          "same"
-        )
-        .to(
-          this.roomChildren.cube.scale,
-          {
-            x: 10,
-            y: 10,
-            z: 10,
-          },
-          "same"
-        )
+
         .to(
           this.camera.orthographicCamera.position,
           {
-            y: 8,
+            y: 2.5,
           },
           "same"
         )
-        .to(
-          this.roomChildren.cube.position,
-          {
-            x: -0.01442,
-            y: 0.101997,
-            z: 2.6244,
-          },
-          "same"
-        )
+
         .set(this.roomChildren.body.scale, {
-          x: 8.0,
-          y: 7.9,
-          z: 5.0,
+          x: 1,
+          y: 1,
+          z: 1,
         })
-        .to(
-          this.roomChildren.cube.scale,
-          {
-            x: 0,
-            y: 0,
-            z: 0,
-            duration: 0.7,
-          },
-          "introtext"
-        )
+
         .to(
           ".hero-main-title .animatedis",
           {
@@ -211,17 +143,7 @@ export default class Preloader extends EventEmitter {
           },
           "introtext"
         )
-        .to(
-          this.roomChildren.body.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "back.out(2.2)",
-            duration: 0.5,
-          },
-          ">-0.5"
-        )
+
         .to(
           this.roomChildren.pictureframes.scale,
           {
@@ -277,6 +199,26 @@ export default class Preloader extends EventEmitter {
           },
           ">-0.1"
         )
+        // // .to(
+        // //   this.roomChildren.chair.scale,
+        // //   {
+        // //     x: 1,
+        // //     y: 1,
+        // //     z: 1,
+        // //     ease: "back.out(2.2)",
+        // //     duration: 0.5,
+        // //   },
+        // //   "chair"
+        // )
+        // .to(
+        //   this.roomChildren.chair.rotation,
+        //   {
+        //     y: 4 * Math.PI + Math.PI / 4,
+        //     ease: "power2.out",
+        //     duration: 1,
+        //   },
+        //   "chair"
+        // )
         .to(".arrow-svg-wrapper", {
           opacity: 1,
           onComplete: resolve,
@@ -316,12 +258,6 @@ export default class Preloader extends EventEmitter {
     this.scaleFlag = true;
     await this.firstIntro();
     this.moveFlag = true;
-    this.scrollOnceEvent = this.onScroll.bind(this);
-    this.touchStart = this.onTouch.bind(this);
-    this.touchMove = this.onTouchMove.bind(this);
-    window.addEventListener("wheel", this.scrollOnceEvent);
-    window.addEventListener("touchstart", this.touchStart);
-    window.addEventListener("touchmove", this.touchMove);
   }
   async playSecondIntro() {
     this.moveFlag = false;
@@ -330,32 +266,16 @@ export default class Preloader extends EventEmitter {
     this.emit("enablecontrols");
   }
 
-  move() {
-    if (this.device === "desktop") {
-      this.room.position.set(-1, 0, 0);
-    } else {
-      this.room.position.set(0, 0, -1);
-    }
-  }
-
   scale() {
     this.roomChildren.light.width = 0;
     this.roomChildren.light.height = 0;
 
     if (this.device === "desktop") {
-      this.room.scale.set(0.25, 0.25, 0.25);
+      this.room.scale.set(0.35, 0.35, 0.35);
     } else {
       this.room.scale.set(0.11, 0.11, 0.11);
     }
   }
 
-  update() {
-    if (this.moveFlag) {
-      this.move();
-    }
-
-    if (this.scaleFlag) {
-      this.scale();
-    }
-  }
+  update() {}
 }
