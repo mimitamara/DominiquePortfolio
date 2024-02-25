@@ -239,17 +239,17 @@ export default class Controls {
         this.thirdMoveTimeline.to(
           this.room.scale,
           {
-            x: 2,
-            y: 2,
-            z: 2,
+            x: 1.5,
+            y: 1.5,
+            z: 1.5,
           },
           "same"
         );
         this.thirdMoveTimeline.to(
           this.room.position,
           {
-            x: -5,
-            z: 100,
+            x: -3,
+            z: 13,
           },
           "same"
         );
