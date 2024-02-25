@@ -502,6 +502,10 @@ svg {
   background-color: var(--color-pinklight-light);
 }
 
+.details {
+  color: var(--color-text-light);
+}
+
 /* Media Queries -------*/
 
 @media (max-width: 968px) {
