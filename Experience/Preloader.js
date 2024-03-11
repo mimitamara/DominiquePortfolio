@@ -102,123 +102,123 @@ export default class Preloader extends EventEmitter {
           "same"
         )
 
-        .to(
-          this.camera.orthographicCamera.position,
-          {
-            y: 2.5,
-          },
-          "same"
-        )
+        //   //       .to(
+        //   //         this.camera.orthographicCamera.position,
+        //   //         {
+        //   //           y: 2.5,
+        //   //         },
+        //   //         "same"
+        //   //       )
 
-        .set(this.roomChildren.body.scale, {
-          x: 1,
-          y: 1,
-          z: 1,
-        })
+        //   //       .set(this.roomChildren.body.scale, {
+        //   //         x: 1,
+        //   //         y: 1,
+        //   //         z: 1,
+        //   //       })
 
-        .to(
-          ".hero-main-title .animatedis",
-          {
-            yPercent: 0,
-            stagger: 0.07,
-            ease: "back.out(1.7)",
-          },
-          "introtext"
-        )
-        .to(
-          ".hero-main-description .animatedis",
-          {
-            yPercent: 0,
-            stagger: 0.07,
-            ease: "back.out(1.7)",
-          },
-          "introtext"
-        )
-        .to(
-          ".hero-second-description .animatedis",
-          {
-            yPercent: 0,
-            stagger: 0.07,
-            ease: "back.out(1.7)",
-          },
-          "introtext"
-        )
+        //   //       .to(
+        //   //         ".hero-main-title .animatedis",
+        //   //         {
+        //   //           yPercent: 0,
+        //   //           stagger: 0.07,
+        //   //           ease: "back.out(1.7)",
+        //   //         },
+        //   //         "introtext"
+        //   //       )
+        //   //       .to(
+        //   //         ".hero-main-description .animatedis",
+        //   //         {
+        //   //           yPercent: 0,
+        //   //           stagger: 0.07,
+        //   //           ease: "back.out(1.7)",
+        //   //         },
+        //   //         "introtext"
+        //   //       )
+        //   //       .to(
+        //   //         ".hero-second-description .animatedis",
+        //   //         {
+        //   //           yPercent: 0,
+        //   //           stagger: 0.07,
+        //   //           ease: "back.out(1.7)",
+        //   //         },
+        //   //         "introtext"
+        //   //       )
 
-        .to(
-          this.roomChildren.pictureframes.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "back.out(2.2)",
-            duration: 0.5,
-          },
-          ">-0.4"
-        )
-        .to(
-          this.roomChildren.desks.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "back.out(2.2)",
-            duration: 0.5,
-          },
-          ">-0.3"
-        )
-        .to(
-          this.roomChildren.screens.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "back.out(2.2)",
-            duration: 0.5,
-          },
-          ">-0.2"
-        )
-        .to(
-          this.roomChildren.beditems.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "back.out(2.2)",
-            duration: 0.5,
-          },
-          ">-0.1"
-        )
-        .to(
-          this.roomChildren.carpetitems.scale,
-          {
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "back.out(2.2)",
-            duration: 0.5,
-          },
-          ">-0.1"
-        )
-        // // .to(
-        // //   this.roomChildren.chair.scale,
-        // //   {
-        // //     x: 1,
-        // //     y: 1,
-        // //     z: 1,
-        // //     ease: "back.out(2.2)",
-        // //     duration: 0.5,
-        // //   },
-        // //   "chair"
-        // )
-        // .to(
-        //   this.roomChildren.chair.rotation,
-        //   {
-        //     y: 4 * Math.PI + Math.PI / 4,
-        //     ease: "power2.out",
-        //     duration: 1,
-        //   },
-        //   "chair"
-        // )
+        //   //       .to(
+        //   //         this.roomChildren.pictureframes.scale,
+        //   //         {
+        //   //           x: 1,
+        //   //           y: 1,
+        //   //           z: 1,
+        //   //           ease: "back.out(2.2)",
+        //   //           duration: 0.5,
+        //   //         },
+        //   //         ">-0.4"
+        //   //       )
+        //   //       .to(
+        //   //         this.roomChildren.desks.scale,
+        //   //         {
+        //   //           x: 1,
+        //   //           y: 1,
+        //   //           z: 1,
+        //   //           ease: "back.out(2.2)",
+        //   //           duration: 0.5,
+        //   //         },
+        //   //         ">-0.3"
+        //   //       )
+        //   //       .to(
+        //   //         this.roomChildren.screens.scale,
+        //   //         {
+        //   //           x: 1,
+        //   //           y: 1,
+        //   //           z: 1,
+        //   //           ease: "back.out(2.2)",
+        //   //           duration: 0.5,
+        //   //         },
+        //   //         ">-0.2"
+        //   //       )
+        //   //       .to(
+        //   //         this.roomChildren.beditems.scale,
+        //   //         {
+        //   //           x: 1,
+        //   //           y: 1,
+        //   //           z: 1,
+        //   //           ease: "back.out(2.2)",
+        //   //           duration: 0.5,
+        //   //         },
+        //   //         ">-0.1"
+        //   //       )
+        //   //       .to(
+        //   //         this.roomChildren.carpetitems.scale,
+        //   //         {
+        //   //           x: 1,
+        //   //           y: 1,
+        //   //           z: 1,
+        //   //           ease: "back.out(2.2)",
+        //   //           duration: 0.5,
+        //   //         },
+        //   //         ">-0.1"
+        //   //       )
+        //   //       // // .to(
+        //   //       // //   this.roomChildren.chair.scale,
+        //   //       // //   {
+        //   //       // //     x: 1,
+        //   //       // //     y: 1,
+        //   //       // //     z: 1,
+        //   //       // //     ease: "back.out(2.2)",
+        //   //       // //     duration: 0.5,
+        //   //       // //   },
+        //   //       // //   "chair"
+        //   //       // )
+        //   //       // .to(
+        //   //       //   this.roomChildren.chair.rotation,
+        //   //       //   {
+        //   //       //     y: 4 * Math.PI + Math.PI / 4,
+        //   //       //     ease: "power2.out",
+        //   //       //     duration: 1,
+        //   //       //   },
+        //   //       //   "chair"
+        //   //       // )
         .to(".arrow-svg-wrapper", {
           opacity: 1,
           onComplete: resolve,
@@ -258,12 +258,12 @@ export default class Preloader extends EventEmitter {
     this.scaleFlag = true;
     await this.firstIntro();
     this.moveFlag = true;
+    this.emit("enablecontrols");
   }
   async playSecondIntro() {
     this.moveFlag = false;
     await this.secondIntro();
     this.scaleFlag = false;
-    this.emit("enablecontrols");
   }
 
   scale() {

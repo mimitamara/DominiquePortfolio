@@ -14,11 +14,10 @@ export default class Controls {
     this.camera = this.experience.camera;
     this.room = this.experience.world.room.actualRoom;
     this.room.children.forEach((child) => {
-      if (child.type === "PointLight") {
-        this.light = child;
+      if (child.type === "RectAreaLight") {
+        this.rectLight = child;
       }
     });
-
     this.circleFirst = this.experience.world.floor.circleFirst;
     this.circleSecond = this.experience.world.floor.circleSecond;
     this.circleThird = this.experience.world.floor.circleThird;
@@ -27,62 +26,70 @@ export default class Controls {
 
     document.querySelector(".page").style.overflow = "visible";
 
-    this.setSmoothScroll();
+    if (
+      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      this.setSmoothScroll();
+    }
     this.setScrollTrigger();
   }
-  setupASScroll() {
-    // https://github.com/ashthornton/asscroll
-    const asscroll = new ASScroll({
-      ease: 0.15,
-      disableRaf: true,
-    });
 
-    GSAP.ticker.add(asscroll.update);
+  // setupASScroll() {
+  //   // https://github.com/ashthornton/asscroll
+  //   const asscroll = new ASScroll({
+  //     ease: 0.1,
+  //     disableRaf: true,
+  //   });
 
-    ScrollTrigger.defaults({
-      scroller: asscroll.containerElement,
-    });
+  //   GSAP.ticker.add(asscroll.update);
 
-    ScrollTrigger.scrollerProxy(asscroll.containerElement, {
-      scrollTop(value) {
-        if (arguments.length) {
-          asscroll.currentPos = value;
-          return;
-        }
-        return asscroll.currentPos;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-      fixedMarkers: true,
-    });
+  //   ScrollTrigger.defaults({
+  //     scroller: asscroll.containerElement,
+  //   });
 
-    asscroll.on("update", ScrollTrigger.update);
-    ScrollTrigger.addEventListener("refresh", asscroll.resize);
+  //   ScrollTrigger.scrollerProxy(asscroll.containerElement, {
+  //     scrollTop(value) {
+  //       if (arguments.length) {
+  //         asscroll.currentPos = value;
+  //         return;
+  //       }
+  //       return asscroll.currentPos;
+  //     },
+  //     getBoundingClientRect() {
+  //       return {
+  //         top: 0,
+  //         left: 0,
+  //         width: window.innerWidth,
+  //         height: window.innerHeight,
+  //       };
+  //     },
+  //     fixedMarkers: true,
+  //   });
 
-    requestAnimationFrame(() => {
-      asscroll.enable({
-        newScrollElements: document.querySelectorAll(
-          ".gsap-marker-start, .gsap-marker-end, [asscroll]"
-        ),
-      });
-    });
-    return asscroll;
-  }
+  //   asscroll.on("update", ScrollTrigger.update);
+  //   ScrollTrigger.addEventListener("refresh", asscroll.resize);
+
+  //   requestAnimationFrame(() => {
+  //     asscroll.enable({
+  //       newScrollElements: document.querySelectorAll(
+  //         ".gsap-marker-start, .gsap-marker-end, [asscroll]"
+  //       ),
+  //     });
+  //   });
+  //   return asscroll;
+  // }
 
   setSmoothScroll() {
-    this.asscroll = this.setupASScroll();
+    // this.asscroll = this.setupASScroll();
   }
 
   setScrollTrigger() {
     ScrollTrigger.matchMedia({
       //Desktop
       "(min-width: 969px)": () => {
+        // console.log("fired desktop");
         this.room.scale.set(0.35, 0.35, 0.35);
         this.room.position.set(0, 0, 0);
         // First Section--------------------------------------------
